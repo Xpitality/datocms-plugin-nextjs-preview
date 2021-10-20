@@ -99,7 +99,7 @@ export default class Main extends Component {
     const noSlashInstanceUrl = instanceUrl.replace(/\/$/, '');
 
     const previewHref = `${noSlashInstanceUrl}${previewPath}?slug=${path}${previewSecret ? `&secret=${previewSecret}` : ''}${selectedLocale && selectedLocale !== 'en' ? `&locale=${selectedLocale}` : ''}`;
-    const liveHref = `${noSlashInstanceUrl}${selectedLocale && selectedLocale !== 'en' ? `/${selectedLocale}` : ''}/${path}`;
+    const liveHref = `${noSlashInstanceUrl}${selectedLocale && selectedLocale !== 'en' ? `/${selectedLocale}` : ''}/${path}?preview=exit`;
 
     return (
       <>
