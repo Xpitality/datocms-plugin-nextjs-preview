@@ -94,6 +94,7 @@ export default class Main extends Component {
     if (plugin.itemStatus === 'new') {
       return <p className="new-msg">Must save entity at least once before previewing</p>;
     }
+    console.log(plugin);
 
     const path = this.getEntityPath();
     const noSlashInstanceUrl = instanceUrl.replace(/\/$/, '');
@@ -129,7 +130,7 @@ export default class Main extends Component {
             ) : null
         }
         <a className="primary" target="_blank" rel="noopener noreferrer" href={previewHref} style={{ backgroundColor: accentColor }}>Preview</a>
-        <a className="secondary" target="_blank" rel="noopener noreferrer" href={liveHref} style={{ borderColor: accentColor, color: accentColor }}>View published</a>
+        <a className="secondary" target="_blank" rel="noopener noreferrer" href={liveHref} style={{ borderColor: accentColor, color: accentColor }}>View Live</a>
       </>
     );
   }
