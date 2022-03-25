@@ -80,7 +80,7 @@ export default class Main extends Component {
   render() {
     const { plugin } = this.props;
     const { locales, selectedLocale } = this.state;
-    const { accentColor } = plugin.theme;
+    const { primaryColor } = plugin.theme;
     const {
       parameters: {
         global: {
@@ -99,8 +99,13 @@ export default class Main extends Component {
     const path = this.getEntityPath();
     const noSlashInstanceUrl = instanceUrl.replace(/\/$/, '');
 
+    const index = noSlashInstanceUrl.indexOf('//') + 2;
+    const stagingPreviewUrl = `${noSlashInstanceUrl.substring(0, index)}staging.${noSlashInstanceUrl.substring(index, noSlashInstanceUrl.length)}`;
+
     const previewHref = `${noSlashInstanceUrl}${previewPath}?slug=${path}${previewSecret ? `&secret=${previewSecret}` : ''}${selectedLocale && selectedLocale !== 'en' ? `&locale=${selectedLocale}` : ''}`;
     const liveHref = `${noSlashInstanceUrl}${selectedLocale && selectedLocale !== 'en' ? `/${selectedLocale}` : ''}/${path}?preview=exit`;
+
+    const stagingPreviewHref = `${stagingPreviewUrl}${previewPath}?slug=${path}${previewSecret ? `&secret=${previewSecret}` : ''}${selectedLocale && selectedLocale !== 'en' ? `&locale=${selectedLocale}` : ''}`;
 
     return (
       <>
@@ -129,8 +134,9 @@ export default class Main extends Component {
               </select>
             ) : null
         }
-        <a className="primary" target="_blank" rel="noopener noreferrer" href={previewHref} style={{ backgroundColor: accentColor }}>Preview</a>
-        <a className="secondary" target="_blank" rel="noopener noreferrer" href={liveHref} style={{ borderColor: accentColor, color: accentColor }}>View Live</a>
+        <a className="primary" target="_blank" rel="noopener noreferrer" href={previewHref} style={{ backgroundColor: primaryColor }}>Preview</a>
+        <a className="secondary" target="_blank" rel="noopener noreferrer" href={liveHref} style={{ borderColor: primaryColor, color: primaryColor }}>View Live</a>
+        <a className="secondary" target="_blank" rel="noopener noreferrer" href={stagingPreviewHref} style={{ backgroundColor: '#EA3C28', color: '#EA3C28' }}>Staging (preview)</a>
       </>
     );
   }
