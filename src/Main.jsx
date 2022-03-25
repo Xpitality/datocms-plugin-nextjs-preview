@@ -136,7 +136,7 @@ export default class Main extends Component {
         }
         <a className="primary" target="_blank" rel="noopener noreferrer" href={previewHref} style={{ backgroundColor: primaryColor }}>Preview</a>
         <a className="secondary" target="_blank" rel="noopener noreferrer" href={liveHref} style={{ borderColor: primaryColor, color: primaryColor }}>View Live</a>
-        <a className="secondary" target="_blank" rel="noopener noreferrer" href={stagingPreviewHref} style={{ backgroundColor: '#EA3C28', color: '#EA3C28' }}>Staging (preview)</a>
+        <a className="secondary" target="_blank" rel="noopener noreferrer" href={stagingPreviewHref} style={{ borderColor: '#EA3C28', color: '#EA3C28' }}>Staging (preview)</a>
       </>
     );
   }
